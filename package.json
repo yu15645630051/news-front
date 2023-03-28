@@ -7,10 +7,14 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "core-js": "^3.8.3",
+    "element-plus": "^2.1.4",
+    "particles.vue3": "^1.42.4",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.0",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",
