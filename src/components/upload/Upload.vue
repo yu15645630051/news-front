@@ -3,39 +3,36 @@
  * @公众号: 大前端私房菜
 -->
 <template>
-  <el-upload
-    class="avatar-uploader"
-    action="https://jsonplaceholder.typicode.com/posts/"
-    :show-file-list="false"
-    :auto-upload="false"
-    :on-change="handleChange"
-  >
-    <img
-      v-if="props.avatar"
-      :src="uploadAvatar"
-      class="avatar"
-    />
-    <el-icon
-      v-else
-      class="avatar-uploader-icon"
+    <el-upload
+        class="avatar-uploader"
+        action="https://jsonplaceholder.typicode.com/posts/"
+        :show-file-list="false"
+        :auto-upload="false"
+        :on-change="handleChange"
     >
-      <Plus />
-    </el-icon>
-  </el-upload>
+        <img
+            v-if="props.avatar"
+            :src="uploadAvatar"
+            class="avatar"
+        />
+        <el-icon
+            v-else
+            class="avatar-uploader-icon"
+        >
+            <Plus />
+        </el-icon>
+    </el-upload>
 </template>
 
 <script setup>
 import { Plus } from "@element-plus/icons-vue";
-import { defineEmits, defineProps, computed } from 'vue'
+import {defineEmits,defineProps,computed} from 'vue'
 //每次选择完图片之后的回调
+
 const props = defineProps({
-  avatar: String
+    avatar:String
 })
 
-// 如果你想传递多个参数给defineEmits，你可以使用以下方法：
-
-// 使用字符串数组，列出所有你想触发的事件的名称1。例如：
-// const emit = defineEmits(['inFocus', 'submit'])
 const emit = defineEmits(["kerwinchange"])
 
 const uploadAvatar = computed(
@@ -46,11 +43,12 @@ const uploadAvatar = computed(
 );
 
 const handleChange = file => {
-  emit("kerwinchange", file.raw)
+    emit("kerwinchange",file.raw)
 };
 </script>
 
 <style lang="scss" scoped>
+
 ::v-deep .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
