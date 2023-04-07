@@ -1,7 +1,7 @@
 <!--
- * @作者: kerwin
- * @公众号: 大前端私房菜
+ * @作者: 
+ * 胡萝卜会飞
 -->
 <template>
-    <el-empty description="404 走丢了" />
+  <el-empty description="404 走丢了" />
 </template>

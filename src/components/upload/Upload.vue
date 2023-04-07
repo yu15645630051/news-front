@@ -1,36 +1,36 @@
 <!--
- * @作者: kerwin
- * @公众号: 大前端私房菜
+ * @作者: 
+ * 胡萝卜会飞
 -->
 <template>
-    <el-upload
-        class="avatar-uploader"
-        action="https://jsonplaceholder.typicode.com/posts/"
-        :show-file-list="false"
-        :auto-upload="false"
-        :on-change="handleChange"
+  <el-upload
+    class="avatar-uploader"
+    action="https://jsonplaceholder.typicode.com/posts/"
+    :show-file-list="false"
+    :auto-upload="false"
+    :on-change="handleChange"
+  >
+    <img
+      v-if="props.avatar"
+      :src="uploadAvatar"
+      class="avatar"
+    />
+    <el-icon
+      v-else
+      class="avatar-uploader-icon"
     >
-        <img
-            v-if="props.avatar"
-            :src="uploadAvatar"
-            class="avatar"
-        />
-        <el-icon
-            v-else
-            class="avatar-uploader-icon"
-        >
-            <Plus />
-        </el-icon>
-    </el-upload>
+      <Plus />
+    </el-icon>
+  </el-upload>
 </template>
 
 <script setup>
 import { Plus } from "@element-plus/icons-vue";
-import {defineEmits,defineProps,computed} from 'vue'
+import { defineEmits, defineProps, computed } from 'vue'
 //每次选择完图片之后的回调
 
 const props = defineProps({
-    avatar:String
+  avatar: String
 })
 
 const emit = defineEmits(["kerwinchange"])
@@ -43,12 +43,11 @@ const uploadAvatar = computed(
 );
 
 const handleChange = file => {
-    emit("kerwinchange",file.raw)
+  emit("kerwinchange", file.raw)
 };
 </script>
 
 <style lang="scss" scoped>
-
 ::v-deep .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;

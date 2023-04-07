@@ -1,6 +1,6 @@
 /*
- * @作者: kerwin
- * @公众号: 大前端私房菜
+ * @作者: 
+ * 胡萝卜会飞
  */
 import moment from 'moment'
 moment.locale("zh-cn")  

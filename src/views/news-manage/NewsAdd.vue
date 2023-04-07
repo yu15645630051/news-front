@@ -1,71 +1,71 @@
 <!--
- * @作者: kerwin
- * @公众号: 大前端私房菜
+ * @作者: 
+ * 胡萝卜会飞
 -->
 <template>
-    <div>
-        <el-page-header
-            content="创建新闻"
-            icon=""
-            title="新闻管理"
-        />
-        <el-form
-            ref="newsFormRef"
-            :model="newsForm"
-            :rules="newsFormRules"
-            label-width="80px"
-            class="demo-ruleForm"
+  <div>
+    <el-page-header
+      content="创建新闻"
+      icon=""
+      title="新闻管理"
+    />
+    <el-form
+      ref="newsFormRef"
+      :model="newsForm"
+      :rules="newsFormRules"
+      label-width="80px"
+      class="demo-ruleForm"
+    >
+      <el-form-item
+        label="标题"
+        prop="title"
+      >
+        <el-input v-model="newsForm.title" />
+      </el-form-item>
+      <el-form-item
+        label="内容"
+        prop="content"
+      >
+        <editor @event="handleChange" />
+      </el-form-item>
+
+      <el-form-item
+        label="类别"
+        prop="category"
+      >
+        <el-select
+          v-model="newsForm.category"
+          class="m-2"
+          placeholder="Select"
+          style="width:100%"
         >
-            <el-form-item
-                label="标题"
-                prop="title"
-            >
-                <el-input v-model="newsForm.title" />
-            </el-form-item>
-            <el-form-item
-                label="内容"
-                prop="content"
-            >
-                <editor @event="handleChange" />
-            </el-form-item>
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+      </el-form-item>
 
-            <el-form-item
-                label="类别"
-                prop="category"
-            >
-                <el-select
-                    v-model="newsForm.category"
-                    class="m-2"
-                    placeholder="Select"
-                    style="width:100%"
-                >
-                    <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                    />
-                </el-select>
-            </el-form-item>
+      <el-form-item
+        label="封面"
+        prop="cover"
+      >
+        <Upload
+          :avatar="newsForm.cover"
+          @kerwinchange="handleUploadChange"
+        />
+      </el-form-item>
 
-            <el-form-item
-                label="封面"
-                prop="cover"
-            >
-                <Upload
-                    :avatar="newsForm.cover"
-                    @kerwinchange="handleUploadChange"
-                />
-            </el-form-item>
-
-            <el-form-item>
-                <el-button
-                    type="primary"
-                    @click="submitForm()"
-                >添加新闻</el-button>
-            </el-form-item>
-        </el-form>
-    </div>
+      <el-form-item>
+        <el-button
+          type="primary"
+          @click="submitForm()"
+        >添加新闻</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
 </template>
 
 <script setup>
@@ -73,7 +73,7 @@ import { ref, reactive } from "vue";
 import editor from "@/components/editor/Editor";
 import Upload from "@/components/upload/Upload";
 import upload from '@/util/upload'
-import {useRouter} from 'vue-router'
+import { useRouter } from 'vue-router'
 const router = useRouter()
 const newsFormRef = ref();
 const newsForm = reactive({
@@ -113,20 +113,20 @@ const options = [
   }
 ];
 
-const handleUploadChange = (file)=>{
-    newsForm.cover = URL.createObjectURL(file);
-    newsForm.file = file
+const handleUploadChange = (file) => {
+  newsForm.cover = URL.createObjectURL(file);
+  newsForm.file = file
 }
 
-const submitForm = ()=>{
-    newsFormRef.value.validate(async (valid)=>{
-        if(valid){
-            // console.log(newsForm)
-            //后台通信,
-            await upload("/adminapi/news/add",newsForm)
-            router.push(`/news-manage/newslist`)
-        }
-    })
+const submitForm = () => {
+  newsFormRef.value.validate(async (valid) => {
+    if (valid) {
+      // console.log(newsForm)
+      //后台通信,
+      await upload("/adminapi/news/add", newsForm)
+      router.push(`/news-manage/newslist`)
+    }
+  })
 }
 </script>
 <style lang="scss" scoped>

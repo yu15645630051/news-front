@@ -1,6 +1,6 @@
 /*
- * @作者: kerwin
- * @公众号: 大前端私房菜
+ * @作者: 
+ * 胡萝卜会飞
  */
 import Home from '../views/home/Home.vue'
 import Center from '../views/center/Center.vue'
