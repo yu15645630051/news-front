@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-container {
+      width: 600px;
+      height: 300px;
+    } */
+
+    .image-container {
+      /* width: 40vw;
+      height: 20vw; */
+    }
+
+    img {
+      width: 40vw;
+      height: 20vw;
+      /* width: 100%;
+      height: 0;
+      padding: 0;
+      padding-bottom: 75%;
+      margin: 50px;
+      background-color: lightsalmon; */
+      aspect-ratio: 16 / 9;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 下面是一些使用不同方法来固定图片宽高比的例子： -->
+
+  <!-- 1. 使用 JavaScript 来动态计算并设置图片容器的高度： -->
+  <div class="image-container">
+    <img src="../assets/1.jpg" alt="Image">
+  </div>
+
+  <!-- <script>
+    const container = document.querySelector('.image-container');
+    const ratio = 9 / 16;
+    container.style.height = container.offsetWidth * ratio + 'px';
+  </script> -->
+
+  <!-- 2. 使用 CSS Grid 布局来控制图片的大小和位置： -->
+  <script>
+    // a()
+    // let a = foo(); // 输出: Hello, world!
+
+    // function foo() {
+    //   console.log('Hello, world!');
+    // }
+
+    var scop = 'global';
+    func()
+
+    function func() {
+      var funcVar = 'func';
+      console.log('这是一个函数', funcVar);
+    }
+    var company = '字节'
+
+    // Uncaught TypeError: a is not a function
+  </script>
+
+
+</body>
+
+</html>

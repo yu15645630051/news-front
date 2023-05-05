@@ -10,7 +10,10 @@
         icon=""
         title="新闻管理"
       />
-
+      <el-button
+        class="button"
+        :track="true"
+      >测试埋点</el-button>
       <el-table
         :data="tableData"
         style="width: 100%"
@@ -34,6 +37,7 @@
         <el-table-column label="是否发布">
           <template #default="scope">
             <el-switch
+              :track="true"
               v-model="scope.row.isPublish"
               :active-value="1"
               :inactive-value="0"
@@ -103,14 +107,26 @@ import { ref, onMounted } from "vue";
 import axios from "axios";
 import formatTime from "@/util/formatTime";
 import { Star, Edit, Delete, StarFilled } from "@element-plus/icons-vue";
+// import monitorPerformance from '@/watcher/performance.js'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const tableData = ref([]);
 const previewData = ref({});
 const dialogVisible = ref(false);
-onMounted(() => {
-  getTableData();
-});
+// onMounted(() => {
+//   getTableData();
+//   // 调用函数获取性能数据
+//   const performanceData = monitorPerformance();
+
+//   // 打印性能数据
+//   console.log(`页面加载时间：${performanceData.pageLoadTime}ms`);
+//   console.log(`域名解析时间：${performanceData.dnsLookupTime}ms`);
+//   console.log(`TCP 连接时间：${performanceData.tcpConnectTime}ms`);
+//   console.log(`请求响应时间：${performanceData.requestResponseTime}ms`);
+//   console.log(`DOM 解析时间：${performanceData.domParseTime}ms`);
+//   console.log(`FCP 时间：${performanceData.fcpTime}ms`);
+//   console.log(`LCP 时间：${performanceData.lcpTime}ms`);
+// });
 
 const getTableData = async () => {
   const res = await axios.get(`/adminapi/news/list`);
